@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
+
 	"example.com/hello/mocking"
 )
 
@@ -42,6 +44,6 @@ func greetingPrefix(language string) (prefix string) {
 
 func main() {
 	fmt.Println(Hello("world", ""))
-
-	mocking.Countdown(os.Stdout, &mocking.DefaultSleeper{})
+	sleeper := mocking.NewConfigurableSleeper(2 * time.Second, time.Sleep)
+	mocking.Countdown(os.Stdout, &sleeper)
 }
