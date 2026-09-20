@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"example.com/hello/mocking"
+)
 
 const (
 	spanish = "Spanish"
@@ -38,4 +42,6 @@ func greetingPrefix(language string) (prefix string) {
 
 func main() {
 	fmt.Println(Hello("world", ""))
+
+	mocking.Countdown(os.Stdout, &mocking.DefaultSleeper{})
 }
