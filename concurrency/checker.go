@@ -18,7 +18,7 @@ func CheckWebsite(wc WebsiteChecker, urls []string) map[string]bool {
 	}
 
 	for i := 0; i < len(urls); i++ {
-		r := <-resultChannel
+		r := <-resultChannel //this is blocking call. I am waiting for the value from channel 
 		results[r.url] = r.ok
 	}
 
